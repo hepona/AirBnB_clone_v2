@@ -24,10 +24,9 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key in ["created_at", "updated_at"]:
-                    self.__dict__[key] = datetime.strptime(
-                        value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, date)
                 elif key != "__class__":
-                    self.__dict__[key] = value
+                    setattr(self, key, value)
         import models
 
 
@@ -52,5 +51,3 @@ class BaseModel:
         dictionary["created_at"] = self.created_at.isoformat()
         dictionary["updated_at"] = self.updated_at.isoformat()
         return dictionary
-
-
