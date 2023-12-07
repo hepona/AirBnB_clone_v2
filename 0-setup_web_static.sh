@@ -7,7 +7,7 @@ sudo mkdir -p data/web_static
 sudo mkdir -p data/web_static/releases
 sudo mkdir -p data/web_static/shared
 sudo mkdir -p data/web_static/releases/test
-echo "Hello word toto" >/data/web_static/releases/index.html
+echo "Hello word toto" > data/web_static/releases/index.html
 sudo mkdir -p data/web_static/current
-sudo ln -sf data/web_static/releases/test/ data/web_static/current
+sudo ln -sf data/web_static/releases/test/data/web_static/current
 sudo chown ubuntu:ubuntu /data/
