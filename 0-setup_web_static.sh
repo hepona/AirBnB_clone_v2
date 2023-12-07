@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# sudo apt update
-# sudo apt install nginx
+sudo apt update
+sudo apt install nginx
 mkdir -p data
 mkdir -p data/web_static
 mkdir -p data/web_static/releases
