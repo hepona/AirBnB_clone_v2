@@ -20,5 +20,6 @@ def do_pack():
         ".tgz",
     )
     fullpath = "version/", filename
-    os.system("mkdir -p versions && tar -czvf {} {}".format(fullpath, "web_static"))
+    os.system(
+        "mkdir -p versions && tar -czvf {} {}".format(fullpath, "web_static"))
     return os.path.abspath(filename[0])
