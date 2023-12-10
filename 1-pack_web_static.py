@@ -22,6 +22,9 @@ def do_pack():
     fullpath = "version/", filename
     print("Packing web_static to {}".format(fullpath))
 
-    os.system(
+    r = os.system(
         "mkdir -p versions && tar -czvf {} {}".format(fullpath, "web_static"))
-    return os.path.abspath(filename[0])
+    if r == 0:
+        return os.path.abspath(filename[0])
+    else:
+        return None
