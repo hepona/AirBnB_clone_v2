@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# doc
+# route that display hello hbnb
 from flask import Flask
 
 app = Flask(__name__)
@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def hello():
-    """func"""
+    """print hello hbnb"""
 
     return "Hello HBNB!"
 
