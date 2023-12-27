@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """route that display “Python ”, followed by the value of the text"""
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -40,6 +40,11 @@ def is_num(n):
     """Print num"""
     return f"{int(n)} is a number"
 
+
+@app.route("/number_template/<int:n>", strict_slashes=False)
+def is_num_display_htmlpage(n):
+    """Print num"""
+    return render_template("5-number.html", n=n)
 
 
 if __name__ == "__main__":
