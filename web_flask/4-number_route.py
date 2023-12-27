@@ -34,5 +34,14 @@ def python_is(text="is cool"):
     return f"Python {text}"
 
 
+# @app.route("/number", strict_slashes=False)
+@app.route("/number/<n>", strict_slashes=False)
+def is_num(n):
+    """Print num"""
+    if n.isdigit():
+        return f"{int(n)} is a number"
+    return ""
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
