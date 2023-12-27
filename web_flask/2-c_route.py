@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# route that display c + text
+"""route that display c + text"""
 from flask import Flask
 
 app = Flask(__name__)

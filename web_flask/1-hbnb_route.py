@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# route that display hbnb
+""" route that display hbnb"""
 from flask import Flask
 
 app = Flask(__name__)
