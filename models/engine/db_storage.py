@@ -70,7 +70,7 @@ class DBStorage:
         try:
             self.__session.commit()
             return True
-        #except (IntegrityError, OperationalError):
+        # except (IntegrityError, OperationalError):
         except Exception:
             return False
 
@@ -78,3 +78,7 @@ class DBStorage:
         """delete from the current database session"""
         if obj:
             self.__session.delete(obj)
+
+    def close(self):
+        """remove"""
+        self.__session.remove()
