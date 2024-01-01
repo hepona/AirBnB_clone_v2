@@ -25,12 +25,16 @@ class FileStorage:
                 self.save()
 
     def all(self, cls=None):
-        """
-        Returns a dictionary of models currently in storage
-        """
+        """Returns a dictionary of models currently in storage"""
+        print_dict = {}
         if cls:
-            return {k: v for k, v in self.__objects.items() if type(v).__name__ == cls.__name__}
-        return self.__objects
+            className = cls.__name__
+            for k, v in FileStorage.__objects.items():
+                if k.split(".")[0] == className:
+                    print_dict[k] = v
+            return print_dict
+        else:
+            return FileStorage.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
