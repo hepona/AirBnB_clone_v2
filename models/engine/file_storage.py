@@ -14,7 +14,8 @@ class FileStorage:
         """Retruns Cities in state"""
 
     def delete(self, obj=None):
-        """loop through __objects, compare each value of key with cls argument wich is object"""
+        """loop through __objects,
+        compare each value of key with cls argument wich is object"""
         if obj:
             id = obj.to_dict()["id"]
             className = obj.to_dict()["__class__"]
@@ -24,16 +25,12 @@ class FileStorage:
                 self.save()
 
     def all(self, cls=None):
-        """Returns a dictionary of models currently in storage"""
-        print_dict = {}
+        """
+        Returns a dictionary of models currently in storage
+        """
         if cls:
-            className = cls.__name__
-            for k, v in FileStorage.__objects.items():
-                if k.split(".")[0] == className:
-                    print_dict[k] = str(v)
-            return print_dict
-        else:
-            return FileStorage.__objects
+            return {k: v for k, v in self.__objects.items() if type(v).__name__ == cls.__name__}
+        return self.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
