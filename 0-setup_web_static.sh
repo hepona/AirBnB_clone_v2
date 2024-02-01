@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
+#bash script that sets up your web servers for the deployment of web_static.
 
-#sh script that sets up your web servers for the deployment of web_static.
 sudo apt update
 
 # Install Nginx
@@ -20,14 +20,14 @@ echo "<html>
             </body>
             </html>" >/data/web_static/releases/test/index.html
 
-            # # Create a symbolic link
+# # Create a symbolic link
 
-            rm -rf /data/web_static/current
-            ln -s /data/web_static/releases/test/ /data/web_static/current
-            # # Adjust permissions
-            sudo chown -R ubuntu:ubuntu /data/
+rm -rf /data/web_static/current
+ln -s /data/web_static/releases/test/ /data/web_static/current
+# # Adjust permissions
+sudo chown -R ubuntu:ubuntu /data/
 
-            # Configure Nginx
+# Configure Nginx
 CONFIG="
 server {
     location /hbnb_static/ {
