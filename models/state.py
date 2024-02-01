@@ -28,4 +28,5 @@ class State(BaseModel, Base):
             for c in listcity.values():
                 if c.state_id == self.id:
                     lst.append(c)
+                    print(f"***{c.state_id, c}***")
             return lst
