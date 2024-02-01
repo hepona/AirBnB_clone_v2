@@ -20,24 +20,9 @@ echo "<html>
 </html>" >/data/web_static/releases/test/index.html
 
 # # Create a symbolic link
-# target="/data/web_static/releases/test/"
-# link="/data/web_static/current"
 
-# # Check if the symbolic link exists
-# if [ -L "$link" ]; then
-#     # Remove the symbolic link
-#     echo "Removing existing symbolic link..."
-#     rm "$link"
-# fi
-
-# # Create a new symbolic link
-# echo "Creating new symbolic link..."
-# ln -s "$target" "$link"
-# echo "Symbolic link created successfully."
-# ln -sf /data/web_static/current /data/web_static/releases/test/
-ln -sf /data/web_static/releases/test/ /data/web_static/current
-
-# # ln -s /data/web_static/current "/data/web_static/releases/test
+rm -rf /data/web_static/current
+ln -s /data/web_static/releases/test/ /data/web_static/current
 # # Adjust permissions
 sudo chown -R ubuntu:ubuntu /data/
 
