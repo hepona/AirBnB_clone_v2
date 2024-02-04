@@ -8,8 +8,15 @@ command => '/usr/bin/apt update',
 exec { 'install_nginx':
 command => '/usr/bin/apt install -y nginx',
 }
-#sudo mkdir -p /data/web_static/{releases/test,shared}
-file {'/data/web_static/releases/test, /data/web_static/shared}':
+
+file {'/data':
+
+ensure => directory,
+recurse => true,
+owner   => 'ubuntu',
+group   => 'ubuntu',
+}
+file {'/data/web_static/releases/test' , '/data/web_static/shared':
 ensure => directory,
 recurse => true,
 }
@@ -28,13 +35,6 @@ file { '/data/web_static/current':
   target => '/data/web_static/releases/test',
 }
 
-file {'/data':
-
-ensure => directory,
-recurse => true,
-owner   => 'ubuntu',
-group   => 'ubuntu',
-}
 file {'/etc/nginx/sites-available/default':
 content => "server {
     location /hbnb_static/ {
@@ -43,5 +43,5 @@ content => "server {
 }",
 }
 exec { 'restart_nginx':
-command => '/usr/sbin/nginx service nginx restart',
+command => '/usr/sbin/service nginx restart',
 }
