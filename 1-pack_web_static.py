@@ -11,12 +11,13 @@ def do_pack():
     """generate .tgz file"""
     date = datetime.datetime.now()
     filename = (
-        f"web_static_{date.year}{date.month}{date.hour}{date.minute}{date.second}.tgz"
+        f"web_static_{date.year}{date.month}\
+            {date.hour}{date.minute}{date.second}.tgz"
     )
 
     fullpath = "versions/" + filename
     print("Packing web_static to {}".format(fullpath))
-    r = local("mkdir -p versions && tar -czvf {} {}".format(fullpath, "web_static"))
+    r = local(f"mkdir -p versions && tar -czvf {fullpath} {web_static}")
     if r == 0:
         return os.path.abspath(filename[0])
     else:
