@@ -10,9 +10,7 @@ import datetime
 def do_pack():
     """generate .tgz file"""
     date = datetime.datetime.now()
-    filename = f"web_static_{date.year}{date.month}\
-            {date.hour}{date.minute}{date.second}.tgz"
-
+    filename = f"web_static_{date:%Y%m%d%H%M%S}.tgz"
     fullpath = "versions/" + filename
     print("Packing web_static to {}".format(fullpath))
     r = local(f"mkdir -p versions && tar -czvf {fullpath} web_static")
