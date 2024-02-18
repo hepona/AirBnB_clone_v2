@@ -12,11 +12,10 @@ class State(BaseModel, Base):
     """State class"""
 
     __tablename__ = "states"
-    if os.getenv("HBNB_TYPE_STORAGE") == "db":
-        name = Column(String(128), nullable=False, unique=True)
-        cities = relationship("City", cascade="all,delete", backref="state")
+    cities = relationship("City", cascade="all,delete", backref="state")
+    name = Column(String(128), nullable=False, unique=True)
 
-    else:
+    if os.getenv("HBNB_TYPE_STORAGE") != "db":
 
         @property
         def cities(self):
@@ -26,7 +25,6 @@ class State(BaseModel, Base):
             lst = []
             listcity = storage.all(City)
             for c in listcity.values():
-                if c.state_id == self.id:
-                    lst.append(c)
-                    print(f"***{c.state_id, c}***")
+                lst.append(c)
+            print(f"test lst:", lst)
             return lst
